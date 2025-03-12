@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::match(['get', 'put'], '/dashboard', function () {
     return 'Welcome to Dashboard';
 });
 
