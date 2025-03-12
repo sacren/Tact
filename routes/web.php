@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any('/dashboard', function () {
+Route::get('/dashboard', function () {
     return 'Welcome to Dashboard';
 });
 
@@ -17,3 +17,9 @@ Route::get('/users', function () {
         '阿久津',
     ];
 });
+
+Route::get('/tact', function () {
+    return redirect('/dashboard');
+});
+
+Route::redirect('/home', '/');
