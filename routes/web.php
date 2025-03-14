@@ -24,8 +24,8 @@ Route::get('/tact', function () {
 
 Route::redirect('/home', '/');
 
-Route::get('/transactions/{tranctionId}/file/{fileId}', function ($tranctionId, $fileId) {
-    return 'Transaction ID: ' . $tranctionId . ' with File ID: ' . $fileId;
+Route::get('/transactions/{tranctionId}/file/{fileId?}', function ($tranctionId, $fileId = null) {
+    return 'Transaction ID: ' . $tranctionId . ' with File ID: ' . ($fileId ?? 'No file ID provided');
 });
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
