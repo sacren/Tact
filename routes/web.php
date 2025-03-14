@@ -24,6 +24,6 @@ Route::get('/tact', function () {
 
 Route::redirect('/home', '/');
 
-Route::get('/transactions/{tranction}', function ($id) {
-    return 'Transaction: ' . $id;
+Route::get('/transactions/{tranctionId}/file/{fileId}', function ($tranctionId, $fileId) {
+    return 'Transaction ID: ' . $tranctionId . ' with File ID: ' . $fileId;
 });
