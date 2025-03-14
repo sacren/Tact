@@ -23,3 +23,7 @@ Route::get('/tact', function () {
 });
 
 Route::redirect('/home', '/');
+
+Route::get('/transactions/{tranction}', function ($id) {
+    return 'Transaction: ' . $id;
+});
