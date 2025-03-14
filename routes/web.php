@@ -27,3 +27,7 @@ Route::redirect('/home', '/');
 Route::get('/transactions/{tranctionId}/file/{fileId}', function ($tranctionId, $fileId) {
     return 'Transaction ID: ' . $tranctionId . ' with File ID: ' . $fileId;
 });
+
+Route::get('/report/{year}/{month?}', function ($year, $month = null) {
+    return 'Report for year: ' . $year . ' and month: ' . $month;
+});
