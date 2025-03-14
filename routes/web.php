@@ -29,5 +29,5 @@ Route::get('/transactions/{tranctionId}/file/{fileId?}', function ($tranctionId,
 });
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
-    return 'Report for year: ' . $year . ' and month: ' . $month;
+    return 'Report for year: ' . $year . ' and month: ' . ($month ?? 'Not provided');
 });
