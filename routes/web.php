@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,3 +38,10 @@ Route::get('/report/{year}/{month?}', function ($year, $month = null) {
     'year' => '19[0-9]{2}|20(0[0-9]|1[0-9]|2[0-5])',
     'month' => '0?[1-9]|1[0-2]',
 ]);
+
+Route::get('/budget/{budgetId}', function (Request $request, int $budgetId) {
+    $year = $request->get('year');
+    $month = $request->get('month');
+
+    return 'Budget ID: ' . $budgetId . ' for year: ' . ($year ?? 'Not provided') . ' and month: ' . ($month ?? 'Not provided');
+});
