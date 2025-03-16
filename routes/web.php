@@ -26,8 +26,10 @@ Route::redirect('/home', '/');
 
 Route::get('/transactions/{transactionId}/files/{fileId?}', function (int $transactionId, int $fileId = null) {
     return 'Transaction ID: ' . $transactionId . ' with File ID: ' . ($fileId ?? 'No file ID provided');
-})->where('transactionId', '[1-9][0-9]*')
-  ->where('fileId', '[1-9][0-9]*');
+})->where([
+    'transactionId' => '[1-9][0-9]*',
+    'fileId' => '[1-9][0-9]*',
+]);
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
     return 'Report for year: ' . $year . ' and month: ' . ($month ?? 'Not provided');
