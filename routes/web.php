@@ -26,15 +26,16 @@ Route::get('/tact', function () {
 
 Route::redirect('/home', '/');
 
-Route::get('/transactions/{transactionId}/files/{fileId?}', function (int $transactionId, int $fileId = null) {
-    return 'Transaction ID: ' . $transactionId . ' with File ID: ' . ($fileId ?? 'No file ID provided');
-})->where([
-    'transactionId' => '[1-9][0-9]*',
-    'fileId' => '[1-9][0-9]*',
-]);
+Route::get('/transactions/{transactionId}/files/{fileId?}', function ($transactionId, $fileId = null) {
+    $fileId = $fileId ?? 'Not provided';
+
+    return 'Transaction ID: ' . $transactionId . ' with File ID: ' . $fileId;
+});
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
-    return 'Report for year: ' . $year . ' and month: ' . ($month ?? 'Not provided');
+    $month = $month ?? 'Not provided';
+
+    return 'Report for year: ' . $year . ' and month: ' . $month;
 });
 
 Route::get('/budget/{budgetId}', function (Request $request, int $budgetId) {
