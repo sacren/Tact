@@ -21,5 +21,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Route::pattern('budgetId', '[1-9][0-9]*');
+        Route::pattern('year', '19[0-9]{2}|20(0[0-9]|1[0-9]|2[0-5])');
+        Route::pattern('month', '0?[1-9]|1[0-2]');
     }
 }

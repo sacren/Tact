@@ -35,10 +35,7 @@ Route::get('/transactions/{transactionId}/files/{fileId?}', function (int $trans
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
     return 'Report for year: ' . $year . ' and month: ' . ($month ?? 'Not provided');
-})->where([
-    'year' => '19[0-9]{2}|20(0[0-9]|1[0-9]|2[0-5])',
-    'month' => '0?[1-9]|1[0-2]',
-]);
+});
 
 Route::get('/budget/{budgetId}', function (Request $request, int $budgetId) {
     try {
