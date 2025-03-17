@@ -54,9 +54,7 @@ Route::get('/budget/{budgetId}', function (Request $request, int $budgetId) {
     $month = $validated['month'] ?? 'Not provided';
 
     return 'Budget ID: ' . $budgetId . ' for year: ' . $year . ' and month: ' . $month;
-})->where([
-    'budgetId' => '[1-9][0-9]*',
-]);
+});
 
 Route::get('/production/{productionId}', function (Request $request, int $productionId) {
     try {
