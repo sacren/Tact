@@ -55,3 +55,19 @@ Route::get('/budget/{budgetId}', function (Request $request, int $budgetId) {
 
     return 'Budget ID: ' . $budgetId . ' for year: ' . $year . ' and month: ' . $month;
 });
+
+Route::get('/production/{productionId}', function (Request $request, int $productionId) {
+    try {
+        $validated = $request->validate([
+            'year' => 'integer|between:1995,2025',
+            'month' => 'integer|between:1,12',
+        ]);
+    } catch (ValidationException $exception) {
+        return $exception->errors();
+    }
+
+    $year = $validated['year'] ?? 'Not provided';
+    $month = $validated['month'] ?? 'Not provided';
+
+    return 'Production ID: ' . $productionId . ' for year: ' . $year . ' and month: ' . $month;
+});
