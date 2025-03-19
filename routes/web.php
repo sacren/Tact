@@ -71,3 +71,7 @@ Route::get('/production/{productionId}', function (Request $request, int $produc
 })->whereNumber([
     'productionId',
 ]);
+
+Route::get('/tax/{filedBy}', function (string $filedBy) {
+    return 'Tax filed by: ' . $filedBy;
+})->whereIn('filedBy', ['fax', 'mail', 'online']);
