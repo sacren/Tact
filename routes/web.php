@@ -68,6 +68,6 @@ Route::get('/production/{productionId}', function (Request $request, int $produc
     $month = $validated['month'] ?? 'Not provided';
 
     return 'Production ID: ' . $productionId . ' for year: ' . $year . ' and month: ' . $month;
-})->where([
-    'productionId' => '[1-9][0-9]*',
+})->whereNumber([
+    'productionId',
 ]);
