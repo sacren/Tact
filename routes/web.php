@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\FiledBy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
@@ -72,6 +73,6 @@ Route::get('/production/{productionId}', function (Request $request, int $produc
     'productionId',
 ]);
 
-Route::get('/tax/{filedBy}', function (string $filedBy) {
-    return 'Tax filed by: ' . $filedBy;
-})->whereIn('filedBy', ['fax', 'mail', 'online']);
+Route::get('/tax/{filedBy}', function (FiledBy $filedBy) {
+    return 'Tax filed by: ' . $filedBy->value;
+});
