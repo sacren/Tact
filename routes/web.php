@@ -27,6 +27,22 @@ Route::get('/tact', function () {
 
 Route::redirect('/home', '/');
 
+Route::get('/transactions', function () {
+    return 'Transactions Page';
+});
+
+Route::get('/transactions/{transactionId}', function ($transactionId) {
+    return 'Transaction ID: ' . $transactionId;
+});
+
+Route::get('/transactions/create', function () {
+    return 'Create for Transaction';
+});
+
+Route::post('/transactions', function () {
+    return 'Transaction Created';
+});
+
 Route::get('/transactions/{transactionId}/files/{fileId?}', function ($transactionId, $fileId = null) {
     $fileId = $fileId ?? 'Not provided';
 
