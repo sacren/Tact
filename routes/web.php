@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\FiledBy;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
@@ -27,9 +28,7 @@ Route::get('/tact', function () {
 
 Route::redirect('/home', '/');
 
-Route::get('/transactions', function () {
-    return 'Transactions Page';
-});
+Route::get('/transactions', [TransactionController::class, 'index']);
 
 Route::get('/transactions/{transactionId}', function ($transactionId) {
     return 'Transaction ID: ' . $transactionId;
