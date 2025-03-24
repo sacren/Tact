@@ -30,16 +30,28 @@ Route::redirect('/home', '/');
 
 Route::get('/transactions', [TransactionController::class, 'index']);
 
-Route::get('/transactions/{transactionId}', function ($transactionId) {
-    return 'Transaction ID: ' . $transactionId;
-});
-
 Route::get('/transactions/create', function () {
     return 'Create for Transaction';
 });
 
 Route::post('/transactions', function () {
     return 'Transaction Created';
+});
+
+Route::get('/transactions/{transactionId}', function ($transactionId) {
+    return 'Transaction ID: ' . $transactionId;
+});
+
+Route::get('/transactions/{transactionId}/edit', function ($transactionId) {
+    return 'Edit Transaction ID: ' . $transactionId;
+});
+
+Route::patch('/transactions/{transactionId}', function ($transactionId) {
+    return 'Update Transaction ID: ' . $transactionId;
+});
+
+Route::delete('/transactions/{transactionId}', function ($transactionId) {
+    return 'Delete Transaction ID: ' . $transactionId;
 });
 
 Route::get('/transactions/{transactionId}/files/{fileId?}', function ($transactionId, $fileId = null) {
