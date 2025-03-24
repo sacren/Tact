@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\FiledBy;
+use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,8 @@ Route::get('/transactions/{transactionId}', [TransactionController::class, 'show
 Route::get('/transactions/{transactionId}/edit', [TransactionController::class, 'edit']);
 Route::patch('/transactions/{transactionId}', [TransactionController::class, 'update']);
 Route::delete('/transactions/{transactionId}', [TransactionController::class, 'destroy']);
+
+Route::get('/transactions/{transactionId}/process', [ProcessController::class, '__invoke']);
 
 Route::get('/transactions/{transactionId}/files/{fileId?}', function ($transactionId, $fileId = null) {
     $fileId = $fileId ?? 'Not provided';
