@@ -19,7 +19,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return 'Create for Transaction';
     }
 
     /**
@@ -27,7 +27,10 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        ]);
+
+        return 'Transaction Created';
     }
 
     /**
@@ -35,7 +38,7 @@ class TransactionController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return 'Transaction ID: ' . $id;
     }
 
     /**
@@ -43,7 +46,7 @@ class TransactionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return 'Edit Transaction ID: ' . $id;
     }
 
     /**
@@ -51,7 +54,10 @@ class TransactionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+        ]);
+
+        return 'Update Transaction ID: ' . $id;
     }
 
     /**
@@ -59,6 +65,6 @@ class TransactionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return 'Delete Transaction ID: ' . $id;
     }
 }
