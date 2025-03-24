@@ -38,12 +38,7 @@ Route::patch('/transactions/{transactionId}', [TransactionController::class, 'up
 Route::delete('/transactions/{transactionId}', [TransactionController::class, 'destroy']);
 
 Route::get('/transactions/{transactionId}/process', ProcessController::class);
-
-Route::get('/transactions/{transactionId}/files/{fileId?}', function ($transactionId, $fileId = null) {
-    $fileId = $fileId ?? 'Not provided';
-
-    return 'Transaction ID: ' . $transactionId . ' with File ID: ' . $fileId;
-});
+Route::get('/transactions/{transactionId}/files/{fileId?}', [TransactionController::class, 'showFile']);
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
     $month = $month ?? 'Not provided';

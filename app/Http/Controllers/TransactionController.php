@@ -67,4 +67,21 @@ class TransactionController
     {
         return 'Delete Transaction ID: ' . $id;
     }
+
+    /**
+     * Process a file associated with the transaction.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $transaction
+     * @param  string|null  $file
+     */
+    public function showFile(Request $request, $transaction, $file = null)
+    {
+        $request->validate([
+        ]);
+
+        $file = $file ?? 'Not provided';
+
+        return 'Transaction ID: ' . $transaction . ' with File ID: ' . $file;
+    }
 }
