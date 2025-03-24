@@ -37,7 +37,7 @@ Route::get('/transactions/{transactionId}/edit', [TransactionController::class, 
 Route::patch('/transactions/{transactionId}', [TransactionController::class, 'update']);
 Route::delete('/transactions/{transactionId}', [TransactionController::class, 'destroy']);
 
-Route::get('/transactions/{transactionId}/process', [ProcessController::class, '__invoke']);
+Route::get('/transactions/{transactionId}/process', ProcessController::class);
 
 Route::get('/transactions/{transactionId}/files/{fileId?}', function ($transactionId, $fileId = null) {
     $fileId = $fileId ?? 'Not provided';
