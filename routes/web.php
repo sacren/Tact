@@ -2,6 +2,7 @@
 
 use App\Enums\FiledBy;
 use App\Http\Controllers\ProcessController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,11 +46,7 @@ Route::prefix('transactions')->group(function () {
     Route::get('/{transactionId}/process', ProcessController::class);
 });
 
-Route::get('/report/{year}/{month?}', function ($year, $month = null) {
-    $month = $month ?? 'Not provided';
-
-    return 'Report for year: ' . $year . ' and month: ' . $month;
-});
+Route::get('/report/{year}/{month?}', [ReportController::class, 'showYearMonth']);
 
 Route::get('/budget/{budgetId}', function (Request $request, int $budgetId) {
     try {
