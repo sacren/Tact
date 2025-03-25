@@ -30,16 +30,19 @@ Route::get('/tact', function () {
 Route::redirect('/home', '/');
 
 Route::prefix('transactions')->group(function () {
-    Route::get('/', [TransactionController::class, 'index']);
-    Route::get('/create', [TransactionController::class, 'create']);
-    Route::post('/', [TransactionController::class, 'store']);
-    Route::get('/{transactionId}', [TransactionController::class, 'show']);
-    Route::get('/{transactionId}/edit', [TransactionController::class, 'edit']);
-    Route::patch('/{transactionId}', [TransactionController::class, 'update']);
-    Route::delete('/{transactionId}', [TransactionController::class, 'destroy']);
+    Route::controller(TransactionController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/{transactionId}', 'show');
+        Route::get('/{transactionId}/edit', 'edit');
+        Route::patch('/{transactionId}', 'update');
+        Route::delete('/{transactionId}', 'destroy');
+
+        Route::get('/{transactionId}/files/{fileId?}', 'showFile');
+    });
 
     Route::get('/{transactionId}/process', ProcessController::class);
-    Route::get('/{transactionId}/files/{fileId?}', [TransactionController::class, 'showFile']);
 });
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
