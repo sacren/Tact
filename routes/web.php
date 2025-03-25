@@ -29,16 +29,18 @@ Route::get('/tact', function () {
 
 Route::redirect('/home', '/');
 
-Route::get('/transactions', [TransactionController::class, 'index']);
-Route::get('/transactions/create', [TransactionController::class, 'create']);
-Route::post('/transactions', [TransactionController::class, 'store']);
-Route::get('/transactions/{transactionId}', [TransactionController::class, 'show']);
-Route::get('/transactions/{transactionId}/edit', [TransactionController::class, 'edit']);
-Route::patch('/transactions/{transactionId}', [TransactionController::class, 'update']);
-Route::delete('/transactions/{transactionId}', [TransactionController::class, 'destroy']);
+Route::prefix('transactions')->group(function () {
+    Route::get('/', [TransactionController::class, 'index']);
+    Route::get('/create', [TransactionController::class, 'create']);
+    Route::post('/', [TransactionController::class, 'store']);
+    Route::get('/{transactionId}', [TransactionController::class, 'show']);
+    Route::get('/{transactionId}/edit', [TransactionController::class, 'edit']);
+    Route::patch('/{transactionId}', [TransactionController::class, 'update']);
+    Route::delete('/{transactionId}', [TransactionController::class, 'destroy']);
 
-Route::get('/transactions/{transactionId}/process', ProcessController::class);
-Route::get('/transactions/{transactionId}/files/{fileId?}', [TransactionController::class, 'showFile']);
+    Route::get('/{transactionId}/process', ProcessController::class);
+    Route::get('/{transactionId}/files/{fileId?}', [TransactionController::class, 'showFile']);
+});
 
 Route::get('/report/{year}/{month?}', function ($year, $month = null) {
     $month = $month ?? 'Not provided';
