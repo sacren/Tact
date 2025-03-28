@@ -19,7 +19,7 @@ class TransactionController
      */
     public function create()
     {
-        return 'Create for Transaction';
+        return 'Create for Transactions Page: ' . route('transactions.create');
     }
 
     /**
@@ -48,7 +48,9 @@ class TransactionController
      */
     public function edit(string $id)
     {
-        return 'Edit Transaction ID: ' . $id;
+        return 'Edit Transaction ID: ' . $id . ' URI: ' . route('transactions.edit', [
+            'transactionId' => $id,
+        ]);
     }
 
     /**
@@ -82,8 +84,9 @@ class TransactionController
         $request->validate([
         ]);
 
-        $file = $file ?? 'Not provided';
-
-        return 'Transaction ID: ' . $transaction . ' with File ID: ' . $file;
+        return 'Transaction ID: ' . $transaction . ' URI: ' . route('transactions.showfile', [
+            'transactionId' => $transaction,
+            'fileId' => $file,
+        ]);
     }
 }

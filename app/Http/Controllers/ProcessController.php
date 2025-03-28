@@ -14,6 +14,8 @@ class ProcessController
         $request->validate([
         ]);
 
-        return 'Processed Transaction ID: ' . $id;
+        return 'Processed Transaction ID: ' . $id . ' URI: ' . route('transactions.process', [
+            'transactionId' => $id,
+        ]);
     }
 }

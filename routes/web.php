@@ -33,17 +33,17 @@ Route::redirect('/home', '/');
 Route::prefix('transactions')->group(function () {
     Route::controller(TransactionController::class)->group(function () {
         Route::get('/', 'index')->name('transactions.index');
-        Route::get('/create', 'create');
-        Route::post('/', 'store');
+        Route::get('/create', 'create')->name('transactions.create');
+        Route::post('/', 'store')->name('transactions.store');
         Route::get('/{transactionId}', 'show')->name('transactions.show');
-        Route::get('/{transactionId}/edit', 'edit');
-        Route::patch('/{transactionId}', 'update');
-        Route::delete('/{transactionId}', 'destroy');
+        Route::get('/{transactionId}/edit', 'edit')->name('transactions.edit');
+        Route::patch('/{transactionId}', 'update')->name('transactions.update');
+        Route::delete('/{transactionId}', 'destroy')->name('transactions.destroy');
 
-        Route::get('/{transactionId}/files/{fileId?}', 'showFile');
+        Route::get('/{transactionId}/files/{fileId?}', 'showFile')->name('transactions.showfile');
     });
 
-    Route::get('/{transactionId}/process', ProcessController::class);
+    Route::get('/{transactionId}/process', ProcessController::class)->name('transactions.process');
 });
 
 Route::get('/report/{year}/{month?}', [ReportController::class, 'showYearMonth']);
