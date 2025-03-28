@@ -11,7 +11,7 @@ class TransactionController
      */
     public function index()
     {
-        return 'Transactions Page';
+        return 'Transactions Page: ' . route('transactions.index');
     }
 
     /**

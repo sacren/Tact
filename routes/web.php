@@ -32,7 +32,7 @@ Route::redirect('/home', '/');
 
 Route::prefix('transactions')->group(function () {
     Route::controller(TransactionController::class)->group(function () {
-        Route::get('/', 'index');
+        Route::get('/', 'index')->name('transactions.index');
         Route::get('/create', 'create');
         Route::post('/', 'store');
         Route::get('/{transactionId}', 'show');
