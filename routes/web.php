@@ -35,7 +35,7 @@ Route::prefix('transactions')->group(function () {
         Route::get('/', 'index')->name('transactions.index');
         Route::get('/create', 'create');
         Route::post('/', 'store');
-        Route::get('/{transactionId}', 'show');
+        Route::get('/{transactionId}', 'show')->name('transactions.show');
         Route::get('/{transactionId}/edit', 'edit');
         Route::patch('/{transactionId}', 'update');
         Route::delete('/{transactionId}', 'destroy');

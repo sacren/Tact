@@ -38,7 +38,9 @@ class TransactionController
      */
     public function show(string $id)
     {
-        return 'Transaction ID: ' . $id;
+        return 'Transaction ID: ' . $id . ' URI: ' . route('transactions.show', [
+            'transactionId' => $id,
+        ]);
     }
 
     /**
