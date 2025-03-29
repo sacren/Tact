@@ -28,6 +28,11 @@ Route::get('/tact', function () {
 
 Route::redirect('/home', '/');
 
+// Include transaction routes
+Route::prefix('transactions')->name('transactions.')->group(function () {
+    include __DIR__ . '/transactions.php';
+});
+
 Route::get('/report/{year}/{month?}', [ReportController::class, 'showYearMonth']);
 
 Route::get('/budget/{budgetId}', function (Request $request, int $budgetId) {
