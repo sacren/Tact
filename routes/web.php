@@ -2,6 +2,7 @@
 
 use App\Enums\FiledBy;
 use App\Http\Controllers\ReportController;
+use App\Http\Middleware\CheckUserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
@@ -72,3 +73,7 @@ Route::get('/production/{productionId}', function (Request $request, int $produc
 Route::get('/tax/{filedBy}', function (FiledBy $filedBy) {
     return 'Tax filed by: ' . $filedBy->value;
 });
+
+Route::get('/admin', function () {
+    return 'Admin secret';
+})->middleware(CheckUserRole::class);
