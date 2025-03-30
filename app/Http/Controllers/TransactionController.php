@@ -9,9 +9,10 @@ class TransactionController
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return 'Transactions Page: ' . route('transactions.index');
+        return 'Transactions Page: ' . route('transactions.index')
+            . ' Request ID: ' . $request->headers->get('X-Request-ID');
     }
 
     /**
