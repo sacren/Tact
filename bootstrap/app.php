@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware
-            ->append(AssignRequestId::class);
+            ->prepend(AssignRequestId::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
