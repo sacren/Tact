@@ -2,6 +2,7 @@
 
 use App\Enums\FiledBy;
 use App\Http\Controllers\ReportController;
+use App\Http\Middleware\AddColor;
 use App\Http\Middleware\CheckUserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -74,7 +75,7 @@ Route::get('/tax/{filedBy}', function (FiledBy $filedBy) {
     return 'Tax filed by: ' . $filedBy->value;
 });
 
-Route::prefix('admin')->middleware(CheckUserRole::class)->group(function () {
+Route::prefix('admin')->middleware([CheckUserRole::class, AddColor::class])->group(function () {
     Route::get('/', function () {
         return 'Admin secret';
     });
