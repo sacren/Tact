@@ -80,7 +80,9 @@ Route::prefix('admin')->middleware([CheckUserRole::class, AddColor::class])->gro
         return 'Admin secret';
     });
 
-    Route::get('/other', function () {
-        return 'Admin other secret';
-    })->withoutMiddleware(AddColor::class);
+    Route::withoutMiddleware(AddColor::class)->group(function () {
+        Route::get('/other', function () {
+            return 'Admin other secret';
+        });
+    });
 });
