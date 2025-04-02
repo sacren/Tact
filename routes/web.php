@@ -75,7 +75,7 @@ Route::get('/tax/{filedBy}', function (FiledBy $filedBy) {
     return 'Tax filed by: ' . $filedBy->value;
 });
 
-Route::prefix('admin')->middleware([CheckUserRole::class, AddColor::class])->group(function () {
+Route::prefix('admin')->middleware([CheckUserRole::class])->group(function () {
     Route::get('/', function () {
         return 'Admin secret';
     });
