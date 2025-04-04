@@ -14,10 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        return $middleware->appendToGroup('web', [
-            CheckUserRole::class,
-            AssignRequestId::class,
-            AddColor::class,
+        return $middleware->alias([
+            'role' => CheckUserRole::class,
+            'assign' => AssignRequestId::class,
+            'color' => AddColor::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
