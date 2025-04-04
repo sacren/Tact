@@ -74,7 +74,7 @@ Route::get('/tax/{filedBy}', function (FiledBy $filedBy) {
     return 'Tax filed by: ' . $filedBy->value;
 });
 
-Route::prefix('admin')->middleware('admin-access')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return 'Admin secret';
     });

@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        return $middleware->appendToGroup('admin-access', [
+        return $middleware->appendToGroup('web', [
             CheckUserRole::class,
             AssignRequestId::class,
             AddColor::class,
