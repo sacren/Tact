@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\TransactionService;
 use Illuminate\Http\Request;
 
 class TransactionController
 {
+    public function __construct(private readonly TransactionService $transactionService)
+    {
+        //
+    }
     /**
      * Display a listing of the resource.
      */
@@ -39,9 +44,11 @@ class TransactionController
      */
     public function show(string $id)
     {
-        return 'Transaction ID: ' . $id . ' URI: ' . route('transactions.show', [
-            'transactionId' => $id,
-        ]);
+        $transaction = $this->transactionService->processTransaction($id);
+
+        return 'Transaction ID: ' . $id
+            . ' URI: ' . route('transactions.show', [ 'transactionId' => $id, ])
+            . ' Amount: ' . $transaction['amount'];
     }
 
     /**
