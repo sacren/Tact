@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\PaymentProcessor;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
 
 class TransactionController
 {
-    public function __construct(private readonly TransactionService $transactionService)
+    public function __construct(
+        private readonly TransactionService $transactionService,
+        private readonly PaymentProcessor $paymentProcessor)
     {
         //
     }

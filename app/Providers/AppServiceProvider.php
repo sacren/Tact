@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\PaymentProcessor;
+use App\Services\Stripe;
 use App\Services\TransactionService;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(TransactionService::class, function () {
             return new TransactionService();
         });
+
+        $this->app->bind(PaymentProcessor::class, Stripe::class);
     }
 
     /**
