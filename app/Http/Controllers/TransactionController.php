@@ -42,9 +42,9 @@ class TransactionController
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, TransactionService $transactionService)
     {
-        $transaction = $this->transactionService->processTransaction($id);
+        $transaction = $transactionService->processTransaction($id);
 
         return 'Transaction ID: ' . $id
             . ' URI: ' . route('transactions.show', [ 'transactionId' => $id, ])
