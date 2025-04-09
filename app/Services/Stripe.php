@@ -9,9 +9,9 @@ class Stripe implements PaymentProcessor
     /**
      * Create a new class instance.
      */
-    public function __construct()
+    public function __construct(private array $config)
     {
-        //
+        dump($this->config);
     }
 
     /**

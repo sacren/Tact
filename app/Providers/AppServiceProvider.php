@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(PaymentProcessor::class, function () {
-            return new Stripe();
+            return new Stripe([1, 2, 3]);
         });
     }
 
