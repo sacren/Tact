@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
             return new TransactionService();
         });
 
-        $this->app->bind(PaymentProcessor::class, function () {
-            return new Stripe([1, 2, 3], new SalesTaxCalculator());
+        $this->app->bind(PaymentProcessor::class, function ($app) {
+            return new Stripe([1, 2, 3], $app->make(SalesTaxCalculator::class));
         });
     }
 
