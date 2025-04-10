@@ -6,6 +6,7 @@ use App\Contracts\PaymentProcessor;
 use App\Services\Stripe;
 use App\Services\TransactionService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
             return new TransactionService();
         });
 
-        $this->app->bind(PaymentProcessor::class, function ($app) {
+        $this->app->bind(PaymentProcessor::class, function (Application $app) {
             return $app->make(Stripe::class, [
                 'config' => [1, 2, 3],
             ]);
