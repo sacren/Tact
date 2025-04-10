@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Contracts\PaymentProcessor;
-use App\Services\SalesTaxCalculator;
 use App\Services\Stripe;
 use App\Services\TransactionService;
 use Illuminate\Support\ServiceProvider;
@@ -20,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(PaymentProcessor::class, function ($app) {
-            return new Stripe([1, 2, 3], $app->make(SalesTaxCalculator::class));
+            return $app->make(Stripe::class, [
+                'config' => [1, 2, 3],
+            ]);
         });
     }
 
