@@ -48,6 +48,9 @@ class TransactionController
     public function show(string $id, TransactionService $transactionService)
     {
         $transaction = $transactionService->processTransaction($id);
+        $app = app()->make(PaymentProcessor::class);
+
+        dump($app);
 
         return 'Transaction ID: ' . $id
             . ' URI: ' . route('transactions.show', [ 'transactionId' => $id, ])
