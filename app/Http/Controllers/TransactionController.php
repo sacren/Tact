@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\PaymentProcessor;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class TransactionController
 {
@@ -48,7 +49,7 @@ class TransactionController
     public function show(string $id, TransactionService $transactionService)
     {
         $transaction = $transactionService->processTransaction($id);
-        $app = app()->make(PaymentProcessor::class);
+        $app = App::make(PaymentProcessor::class);
 
         dump($app);
 
