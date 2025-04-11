@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
             return new TransactionService();
         });
 
-        $this->app->bind(PaymentProcessor::class, function (Application $app) {
+        $this->app->singleton(PaymentProcessor::class, function (Application $app) {
             return $app->make(Stripe::class, [
                 'config' => [1, 2, 3],
             ]);
