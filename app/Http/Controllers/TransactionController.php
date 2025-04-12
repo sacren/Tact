@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Contracts\PaymentProcessor;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Container\Container;
 
 class TransactionController
 {
     public function __construct(
         private readonly TransactionService $transactionService,
-        private readonly PaymentProcessor $paymentProcessor)
+        private readonly PaymentProcessor $paymentProcessor,
+        private readonly Container $container)
     {
         //
     }
@@ -48,7 +50,7 @@ class TransactionController
     public function show(string $id, TransactionService $transactionService)
     {
         $transaction = $transactionService->processTransaction($id);
-        $app = app(PaymentProcessor::class);
+        $app = $this->container->make(PaymentProcessor::class);
 
         dump($app);
 
