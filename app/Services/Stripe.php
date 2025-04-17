@@ -10,6 +10,7 @@ class Stripe implements PaymentProcessor
      * Create a new class instance.
      */
     public function __construct(
+        private array $payment,
         private array $config,
         private SalesTaxCalculator $salesTaxCalculator)
     {
@@ -21,6 +22,7 @@ class Stripe implements PaymentProcessor
      */
     public function process(array $payment): void
     {
-        echo 'Stripe Payment: ' . $payment['transactionId'];
+        $this->payment['amount'] = $payment['amount'];
+        $this->payment['transactionId'] = $payment['transactionId'];
     }
 }

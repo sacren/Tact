@@ -16,6 +16,7 @@ class PaymentProcessorServiceProvider extends ServiceProvider
     {
         $this->app->singleton(PaymentProcessor::class, function (Application $app) {
             return $app->make(Stripe::class, [
+                'payment' => [],
                 'config' => [1, 2, 3],
             ]);
         });
