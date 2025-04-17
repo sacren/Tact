@@ -21,6 +21,6 @@ class Stripe implements PaymentProcessor
      */
     public function process(array $payment): void
     {
-        //
+        echo 'Stripe Payment: ' . $payment['transactionId'];
     }
 }

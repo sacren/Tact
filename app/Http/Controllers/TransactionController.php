@@ -45,11 +45,14 @@ class TransactionController
     /**
      * Display the specified resource.
      */
-    public function show(string $id, TransactionService $transactionService)
+    public function show(
+        string $id,
+        TransactionService $transactionService,
+        PaymentProcessor $paymentProcessor)
     {
         $transaction = $transactionService->processTransaction($id);
+        $paymentProcessor->process($transaction);
         $app = resolve(PaymentProcessor::class);
-
         dump($app);
 
         return 'Transaction ID: ' . $id
