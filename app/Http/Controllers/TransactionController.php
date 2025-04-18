@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\PaymentProcessor;
+use App\Services\Stripe;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,9 @@ class TransactionController
      */
     public function index(Request $request)
     {
+        $stripe = app()[Stripe::class];
+        dump($stripe);
+
         return 'Transactions Page: ' . route('transactions.index')
             . ' Request ID: ' . $request->headers->get('X-Request-ID');
     }
