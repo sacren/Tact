@@ -18,6 +18,7 @@ return new class extends Migration
                   ->cascadeOnDelete()
                   ->cascadeOnUpdate();
             $table->decimal('amount', 10);
+            $table->string('description');
             $table->timestamps();
         });
     }
