@@ -17,6 +17,7 @@ return new class extends Migration
                   ->constrained()
                   ->cascadeOnDelete()
                   ->cascadeOnUpdate();
+            $table->decimal('amount', 10);
             $table->timestamps();
         });
     }
