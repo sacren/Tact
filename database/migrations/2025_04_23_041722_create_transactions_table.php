@@ -19,6 +19,7 @@ return new class extends Migration
                   ->cascadeOnUpdate();
             $table->decimal('amount', 10);
             $table->string('description');
+            $table->dateTime('transaction_date');
             $table->timestamps();
         });
     }
