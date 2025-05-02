@@ -23,8 +23,7 @@ class TransactionController
         $stripe = app()[Stripe::class];
         dump($stripe);
 
-        return 'Transactions Page: ' . route('transactions.index')
-            . ' Request ID: ' . $request->headers->get('X-Request-ID');
+        return view('transactions.index', compact('request'));
     }
 
     /**
