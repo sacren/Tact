@@ -11,6 +11,7 @@
             <p class="text-gray-700 mt-2"><strong>Request ID:</strong>
                 {{ $request->headers->get('X-Request-ID') ?? 'Not Available' }}</p>
             <p class="text-gray-700 mt-2"><strong>Not Escaped:</strong> {!! $repo !!}</p>
+            <p class="text-gray-700 mt-2"><strong>Global Version:</strong> {{ $version }}</p>
         </div>
     </div>
 </x-layouts.app>
