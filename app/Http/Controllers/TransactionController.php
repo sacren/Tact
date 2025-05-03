@@ -23,7 +23,9 @@ class TransactionController
         $stripe = app()[Stripe::class];
         dump($stripe);
 
-        return view('transactions.index', compact('request'));
+        $repo = '<a href="https://github.com/sacren">My Github</a>';
+
+        return view('transactions.index', compact('request', 'repo'));
     }
 
     /**
